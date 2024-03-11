@@ -1,9 +1,12 @@
 package dat3.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import dat3.entity.Film;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,16 +20,19 @@ public class FilmDto {
     private boolean er3D;
     private String filmBeskrivelse;
     private String filmSprog;
+    private LocalDateTime created;
+    private LocalDateTime edited;
 
-    public FilmDto(int id, String titel, int varighed, String genre, boolean er3D, String filmBeskrivelse, String filmSprog) {
-        this.id = id;
-        this.titel = titel;
-        this.varighed = varighed;
-        this.genre = genre;
-        this.er3D = er3D;
-        this.filmBeskrivelse = filmBeskrivelse;
-        this.filmSprog = filmSprog;
+    public FilmDto(Film r, boolean includeAll) {
+        this.id = r.getId();
+        this.titel = r.getTitel();
+        this.varighed = r.getVarighed();
+        this.genre = r.getGenre();
+        this.er3D = r.isEr3D();
+        this.filmBeskrivelse = r.getFilmBeskrivelse();
+        this.filmSprog = r.getFilmSprog();
 
     }
+
 
 }

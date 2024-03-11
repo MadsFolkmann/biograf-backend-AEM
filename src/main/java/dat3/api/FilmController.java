@@ -1,9 +1,8 @@
 package dat3.api;
 
+import dat3.dto.FilmDto;
 import dat3.service.FilmService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +15,17 @@ public class FilmController {
         this.filmService = filmService;
     }
     @GetMapping
-    public List<String> getAllFilms() {
+    public List<FilmDto> getAllFilms() {
         return filmService.getAllFilms();
+    }
+
+    @GetMapping(path ="/{id}")
+    public FilmDto getRecipeById(@PathVariable int id) {
+        return filmService.getFilmById(id);
+    }
+
+    @PostMapping
+    public FilmDto addFilm(@RequestBody FilmDto request) {
+        return filmService.addFilm(request);
     }
 }
