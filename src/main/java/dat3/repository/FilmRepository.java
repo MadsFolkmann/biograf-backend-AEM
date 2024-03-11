@@ -1,4 +1,4 @@
-package dat3.security_demo.repository;
+package dat3.repository;
 
 import dat3.entity.Film;
 import org.springframework.data.jpa.repository.JpaRepository;

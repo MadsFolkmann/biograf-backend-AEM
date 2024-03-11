@@ -1,4 +1,4 @@
-package dat3.security_demo.dto;
+package dat3.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

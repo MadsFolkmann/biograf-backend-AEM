@@ -9,6 +9,8 @@ public class Film {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(unique = true)
     private String titel;
     private int varighed;
     private String genre;
