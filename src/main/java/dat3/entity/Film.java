@@ -23,6 +23,7 @@ public class Film {
     private String titel;
     private int varighed;
     private String genre;
+    private String billede;
     private boolean er3D;
     private String filmBeskrivelse;
     private String filmSprog;

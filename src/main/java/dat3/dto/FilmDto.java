@@ -17,6 +17,7 @@ public class FilmDto {
     private String titel;
     private int varighed;
     private String genre;
+    private String billede;
     private boolean er3D;
     private String filmBeskrivelse;
     private String filmSprog;
@@ -28,6 +29,7 @@ public class FilmDto {
         this.titel = r.getTitel();
         this.varighed = r.getVarighed();
         this.genre = r.getGenre();
+        this.billede = r.getBillede();
         this.er3D = r.isEr3D();
         this.filmBeskrivelse = r.getFilmBeskrivelse();
         this.filmSprog = r.getFilmSprog();

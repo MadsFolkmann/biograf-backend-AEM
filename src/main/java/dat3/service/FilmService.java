@@ -48,6 +48,7 @@ public class FilmService {
         original.setTitel(r.getTitel());
         original.setVarighed(r.getVarighed());
         original.setGenre(r.getGenre());
+        original.setBillede(r.getBillede());
         original.setEr3D(r.isEr3D());
         original.setFilmBeskrivelse(r.getFilmBeskrivelse());
         original.setFilmSprog(r.getFilmSprog());
