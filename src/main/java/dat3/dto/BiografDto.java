@@ -29,9 +29,5 @@ public class BiografDto {
         this.adresse = biograf.getAdresse();
         this.antalSale = biograf.getAntalSale();
 
-        if (includeAll) {
-            this.created = biograf.getCreated();
-            this.edited = biograf.getEdited();
         }
     }
-}
