@@ -34,18 +34,14 @@ public class FilmService {
     }
 
     public FilmDto addFilm(FilmDto request) {
-        if (request.getId() != 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Du kan ikke skaffe id'et for en ny film");
-        }
-        Film film = filmRepository.findByTitel(request.getTitel()).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Kun eksiterende film er tilladt"));
         Film newFilm = new Film();
-        updateFilm(newFilm, request, film);
+        updateFilm(newFilm, request);
         filmRepository.save(newFilm);
-        return new FilmDto(newFilm,false);
+        return new FilmDto(newFilm, false);
     }
 
-    private void updateFilm(Film original, FilmDto r, Film film) {
+
+    private void updateFilm(Film original, FilmDto r) {
         original.setTitel(r.getTitel());
         original.setVarighed(r.getVarighed());
         original.setGenre(r.getGenre());
@@ -57,18 +53,19 @@ public class FilmService {
 
 
     public FilmDto editFilm(FilmDto request, int id) {
-        if (request.getId() != id) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Du kan ikke ændre id for et eksiterende film id");
-        }
-        Film film = filmRepository.findByTitel(request.getTitel()).
-                orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Kun eksisterende film er tilladt"));
-
         Film filmToEdit = filmRepository.findById(id).orElseThrow(()
                 -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
-        updateFilm(filmToEdit,request, film);
+
+        // Opdater filmobjektet med oplysninger fra anmodningen
+        updateFilm(filmToEdit, request);
+
+        // Gem den opdaterede film i databasen
         filmRepository.save(filmToEdit);
-        return new FilmDto(filmToEdit,false);
+
+        // Returner den opdaterede film som en DTO
+        return new FilmDto(filmToEdit, false);
     }
+
 
     public ResponseEntity deleteFilm(int id) {
         Film film = filmRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
