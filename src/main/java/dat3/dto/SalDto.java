@@ -19,7 +19,6 @@ public class SalDto {
     private Integer antalRækker;
     private Integer antalSæderPrRække;
     private SalType salType;
-    private List<SædeDto> sæder; // SædeDto skal oprettes tilsvarende
 
     public SalDto(Sal sal, boolean includeAll) {
         this.id = sal.getId();

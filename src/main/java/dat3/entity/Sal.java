@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "sal")
+
 public class Sal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +25,6 @@ public class Sal {
     private int antalRækker;
     private int antalSæderPrRække;
     private SalType salType;
-    @OneToMany
-    private List<Sæde> sæder;
 
     @CreationTimestamp
     private LocalDateTime created;
