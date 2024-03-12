@@ -1,20 +1,10 @@
 package dat3.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @Entity
-@Table(name = "biograf")
 public class Biograf {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +15,53 @@ public class Biograf {
     @OneToMany
     private List<Sal> sale;
 
-    @CreationTimestamp
-    private LocalDateTime created;
+    public Biograf() {
+    }
 
-    @UpdateTimestamp
-    private LocalDateTime edited;
+    public Biograf(String navn, String adresse, int antalSale, List<Sal> sale) {
+        this.navn = navn;
+        this.adresse = adresse;
+        this.antalSale = antalSale;
+        this.sale = sale;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public int getAntalSale() {
+        return antalSale;
+    }
+
+    public void setAntalSale(int antalSale) {
+        this.antalSale = antalSale;
+    }
+
+    public List<Sal> getSale() {
+        return sale;
+    }
+
+    public void setSale(List<Sal> sale) {
+        this.sale = sale;
+    }
 }
