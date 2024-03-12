@@ -21,22 +21,23 @@ public class BiografController {
     }
 
     @GetMapping(path ="/{id}")
-    public BiografDto getBiografById(int id) {
+    public BiografDto getBiografById(@PathVariable Integer id) {
         return biografService.getBiografById(id);
     }
 
     @PostMapping
-    public BiografDto addBiograf(BiografDto request) {
+    public BiografDto addBiograf(@RequestBody BiografDto request) {
         return biografService.addBiograf(request);
     }
 
     @PutMapping(path = "/{id}")
-    public BiografDto editBiograf(BiografDto request,int id) {
-        return biografService.editBiograf(request,id);
+    public BiografDto editBiograf(@RequestBody BiografDto request, @PathVariable Integer id) {
+        return biografService.editBiograf(request, id);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteBiograf(int id) {
+    public void deleteBiograf(@PathVariable Integer id) {
         biografService.deleteBiograf(id);
     }
+
 }
