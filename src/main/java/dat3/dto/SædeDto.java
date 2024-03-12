@@ -1,0 +1,30 @@
+package dat3.dto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import dat3.entity.Sæde;
+import dat3.enums.SædeType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SædeDto {
+    private Integer id;
+    private Integer række;
+    private Integer sædeNummer;
+    private SædeType sædeType;
+    private Double pris;
+    private Boolean optaget;
+
+    public SædeDto(Sæde sæde) {
+        this.id = sæde.getId();
+        this.række = sæde.getRække();
+        this.sædeNummer = sæde.getSædeNummer();
+        this.sædeType = sæde.getSædeType();
+        this.pris = sæde.getPris();
+        this.optaget = sæde.isOptaget();
+    }
+}

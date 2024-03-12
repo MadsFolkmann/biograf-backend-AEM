@@ -70,6 +70,6 @@ public class FilmService {
     public ResponseEntity deleteFilm(int id) {
         Film film = filmRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
         filmRepository.delete(film);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
