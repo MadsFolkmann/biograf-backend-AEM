@@ -1,26 +1,26 @@
+
 package dat3.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import dat3.entity.Sal;
 import dat3.enums.SalType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class SalDto {
+@AllArgsConstructor
+public class SalDtoRequest {
+
     private Integer id;
     private Integer nummer;
     private Integer antalRækker;
     private Integer antalSæderPrRække;
     private SalType salType;
 
-    public SalDto(Sal sal, boolean includeAll) {
+    public SalDtoRequest(Sal sal) {
         this.id = sal.getId();
         this.nummer = sal.getNummer();
         this.antalRækker = sal.getAntalRækker();
