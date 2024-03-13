@@ -20,21 +20,21 @@ public class BiografService {
 
     public List<BiografDto> getAllBiografer() {
         List<Biograf> biografer =  biografRepository.findAll();
-        return biografer.stream().map(biograf -> new BiografDto(biograf, true)) // Brug FilmDto-konstruktøren, der mapper alle filmoplysninger
+        return biografer.stream().map(biograf -> new BiografDto(biograf)) // Brug FilmDto-konstruktøren, der mapper alle filmoplysninger
                 .toList();
     }
 
     public BiografDto getBiografById(int idInt) {
         Biograf biograf = biografRepository.findById(idInt).orElseThrow(() ->
                 new RuntimeException("Biograf ikke fundet"));
-        return new BiografDto(biograf, false);
+        return new BiografDto(biograf);
     }
 
     public BiografDto addBiograf(BiografDto request) {
         Biograf newBiograf = new Biograf();
         updateBiograf(newBiograf, request);
         biografRepository.save(newBiograf);
-        return new BiografDto(newBiograf, false);
+        return new BiografDto(newBiograf);
     }
 
     public void updateBiograf(Biograf original, BiografDto r) {
@@ -49,7 +49,7 @@ public class BiografService {
                 new RuntimeException("Biograf ikke fundet"));
         updateBiograf(biograf, request);
         biografRepository.save(biograf);
-        return new BiografDto(biograf, false);
+        return new BiografDto(biograf);
     }
 
     public ResponseEntity deleteBiograf(int id) {

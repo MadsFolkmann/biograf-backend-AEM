@@ -73,6 +73,8 @@ public class InitData implements CommandLineRunner {
         forestilling1.setSæder(sæderForestilling1);
         forestillingRepository.save(forestilling1);
 
+        Sæde sæde401 = new Sæde(1,1, SædeType.STANDARD, 100, false);
+        sædeRepository.save(sæde401);
         // Tilføj sæder til sal2 (på samme måde som sal1)
 //        Set<Sæde> sæderSal2 = new HashSet<>();
 //        for (int række = 1; række <= 25; række++) {

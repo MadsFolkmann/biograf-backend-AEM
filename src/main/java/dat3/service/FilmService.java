@@ -23,21 +23,21 @@ public class FilmService {
     public List<FilmDto> getAllFilms() {
         List<Film> films = filmRepository.findAll();
         return films.stream()
-                .map(film -> new FilmDto(film, true)) // Brug FilmDto-konstruktøren, der mapper alle filmoplysninger
+                .map(film -> new FilmDto(film)) // Brug FilmDto-konstruktøren, der mapper alle filmoplysninger
                 .toList();
     }
 
     public FilmDto getFilmById(int idInt) {
         Film film = filmRepository.findById(idInt).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
-        return new FilmDto(film, false);
+        return new FilmDto(film);
     }
 
     public FilmDto addFilm(FilmDto request) {
         Film newFilm = new Film();
         updateFilm(newFilm, request);
         filmRepository.save(newFilm);
-        return new FilmDto(newFilm, false);
+        return new FilmDto(newFilm);
     }
 
 
@@ -63,7 +63,7 @@ public class FilmService {
         filmRepository.save(filmToEdit);
 
         // Returner den opdaterede film som en DTO
-        return new FilmDto(filmToEdit, false);
+        return new FilmDto(filmToEdit);
     }
 
 

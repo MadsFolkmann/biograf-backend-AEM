@@ -20,13 +20,22 @@ public class SalDto {
     private Integer antalSæderPrRække;
     private SalType salType;
 
-    public SalDto(Sal sal, boolean includeAll) {
+    public SalDto(Sal sal) {
         this.id = sal.getId();
         this.nummer = sal.getNummer();
         this.antalRækker = sal.getAntalRækker();
         this.antalSæderPrRække = sal.getAntalSæderPrRække();
         this.salType = sal.getSalType();
 
+    }
 
+    public Sal toEntity() {
+        Sal sal = new Sal();
+        sal.setId(this.id);
+        sal.setNummer(this.nummer);
+        sal.setAntalRækker(this.antalRækker);
+        sal.setAntalSæderPrRække(this.antalSæderPrRække);
+        sal.setSalType(this.salType);
+        return sal;
     }
 }

@@ -24,7 +24,7 @@ public class FilmDto {
     private LocalDateTime created;
     private LocalDateTime edited;
 
-    public FilmDto(Film r, boolean includeAll) {
+    public FilmDto(Film r) {
         this.id = r.getId();
         this.titel = r.getTitel();
         this.varighed = r.getVarighed();
@@ -36,5 +36,17 @@ public class FilmDto {
 
     }
 
+    public Film toEntity() {
+        Film film = new Film();
+        film.setId(this.id);
+        film.setTitel(this.titel);
+        film.setVarighed(this.varighed);
+        film.setGenre(this.genre);
+        film.setBillede(this.billede);
+        film.setEr3D(this.er3D);
+        film.setFilmBeskrivelse(this.filmBeskrivelse);
+        film.setFilmSprog(this.filmSprog);
+        return film;
+    }
 
 }

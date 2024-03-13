@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -23,11 +24,23 @@ public class BiografDto {
     private LocalDateTime created;
     private LocalDateTime edited;
 
-    public BiografDto(Biograf biograf, boolean includeAll) {
+    public BiografDto(Biograf biograf) {
         this.id = biograf.getId();
         this.navn = biograf.getNavn();
         this.adresse = biograf.getAdresse();
         this.antalSale = biograf.getAntalSale();
 
         }
+
+    public Biograf toEntity() {
+        Biograf biograf = new Biograf();
+        biograf.setId(this.id);
+        biograf.setNavn(this.navn);
+        biograf.setAdresse(this.adresse);
+        biograf.setAntalSale(this.antalSale);
+        // assuming that SalDto has a toEntity() method
+        biograf.setSale(this.sale.stream().map(SalDto::toEntity).collect(Collectors.toList()));
+        return biograf;
+    }
+
     }
