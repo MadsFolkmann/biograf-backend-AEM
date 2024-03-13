@@ -1,7 +1,9 @@
 package dat3.api;
 
-import dat3.dto.BiografDto;
+import dat3.dto.BiografDtoRequest;
+import dat3.dto.BiografDtoResponse;
 import dat3.service.BiografService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,35 +11,35 @@ import java.util.List;
 @RestController
 @RequestMapping("/biograf")
 public class BiografController {
-    private BiografService biografService;
+
+    private final BiografService biografService;
 
     public BiografController(BiografService biografService) {
         this.biografService = biografService;
     }
 
     @GetMapping
-    public List<BiografDto> getAllBiografer() {
+    public List<BiografDtoResponse> getAllBiografer() {
         return biografService.getAllBiografer();
     }
 
-    @GetMapping(path ="/{id}")
-    public BiografDto getBiografById(@PathVariable Integer id) {
+    @GetMapping(path = "/{id}")
+    public BiografDtoResponse getBiografById(@PathVariable Integer id) {
         return biografService.getBiografById(id);
     }
 
     @PostMapping
-    public BiografDto addBiograf(@RequestBody BiografDto request) {
+    public BiografDtoResponse addBiograf(@RequestBody BiografDtoRequest request) {
         return biografService.addBiograf(request);
     }
 
     @PutMapping(path = "/{id}")
-    public BiografDto editBiograf(@RequestBody BiografDto request, @PathVariable Integer id) {
+    public BiografDtoResponse editBiograf(@RequestBody BiografDtoRequest request, @PathVariable Integer id) {
         return biografService.editBiograf(request, id);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteBiograf(@PathVariable Integer id) {
-        biografService.deleteBiograf(id);
+    public ResponseEntity<Void> deleteBiograf(@PathVariable Integer id) {
+        return biografService.deleteBiograf(id);
     }
-
 }

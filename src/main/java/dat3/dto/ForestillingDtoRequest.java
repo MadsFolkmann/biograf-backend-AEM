@@ -17,16 +17,16 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ForestillingDtoRequest {
     private int id;
-    private BiografDto biograf;
-    private FilmDto film;
+    private BiografDtoRequest biograf;
+    private FilmDtoRequest film;
     private SalDtoRequest sal;
     private Set<SædeDto> sæder;
     private LocalDateTime tidspunkt;
 
     public ForestillingDtoRequest(Forestilling forestilling) {
         this.id = forestilling.getId();
-        this.biograf = new BiografDto(forestilling.getBiograf());
-        this.film = new FilmDto(forestilling.getFilm());
+        this.biograf = new BiografDtoRequest(forestilling.getBiograf());
+        this.film = new FilmDtoRequest(forestilling.getFilm());
         this.sal = new SalDtoRequest(forestilling.getSal());
         this.sæder = forestilling.getSæder().stream().map(SædeDto::new).collect(Collectors.toSet());
         this.tidspunkt = forestilling.getTidspunkt();

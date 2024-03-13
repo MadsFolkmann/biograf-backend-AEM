@@ -87,6 +87,21 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/biograf/*")).permitAll()
 
 
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/sal")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/sal/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/sal")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/sal/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/sal/*")).permitAll()
+
+
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/forestilling")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/forestilling/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/forestilling")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/forestilling/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/forestilling/*")).permitAll()
+
+
+
             //Use this to completely disable security (Will not work if endpoints has been marked with @PreAuthorize)
             //.requestMatchers(mvcMatcherBuilder.pattern("/**")).permitAll());
             .anyRequest().authenticated());

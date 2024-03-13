@@ -23,7 +23,7 @@ public class SalController {
     }
 
     @GetMapping(path ="/{id}")
-    public SalDtoResponse getSalById(int id) {
+    public SalDtoResponse getSalById(@PathVariable Integer id) {
         return salService.getSalById(id);
     }
 
