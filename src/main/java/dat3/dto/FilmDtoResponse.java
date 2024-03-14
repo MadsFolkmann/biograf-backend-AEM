@@ -2,7 +2,6 @@ package dat3.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import dat3.entity.Film;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,8 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class FilmDtoRequest {
+public class FilmDtoResponse {
     private int id;
     private String titel;
     private int varighed;
@@ -23,7 +21,7 @@ public class FilmDtoRequest {
     private String filmBeskrivelse;
     private String filmSprog;
 
-    public FilmDtoRequest(Film film) {
+    public FilmDtoResponse(Film film) {
         this.id = film.getId();
         this.titel = film.getTitel();
         this.varighed = film.getVarighed();
