@@ -29,4 +29,6 @@ public class BiografDtoResponse {
         this.antalSale = biograf.getAntalSale();
 
     }
+
 }
+

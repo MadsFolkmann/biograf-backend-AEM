@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ForestillingDtoRequest {
     private int id;
+
     private BiografDtoRequest biograf;
     private FilmDtoRequest film;
     private SalDtoRequest sal;
