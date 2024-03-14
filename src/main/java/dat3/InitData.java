@@ -18,15 +18,15 @@ public class InitData implements CommandLineRunner {
     private final ForestillingRepository forestillingRepository;
     private final FilmRepository filmRepository;
     private final SædeRepository sædeRepository;
-    private final OrdreRepository ordreRepository;
+    private final BestillingRepository bestillingRepository;
 
-    public InitData(BiografRepository biografRepository, SalRepository salRepository, ForestillingRepository forestillingRepository, FilmRepository filmRepository, SædeRepository sædeRepository, OrdreRepository ordreRepository) {
+    public InitData(BiografRepository biografRepository, SalRepository salRepository, ForestillingRepository forestillingRepository, FilmRepository filmRepository, SædeRepository sædeRepository, BestillingRepository bestillingRepository) {
         this.biografRepository = biografRepository;
         this.salRepository = salRepository;
         this.forestillingRepository = forestillingRepository;
         this.filmRepository = filmRepository;
         this.sædeRepository = sædeRepository;
-        this.ordreRepository = ordreRepository;
+        this.bestillingRepository = bestillingRepository;
     }
 
     @Override
@@ -75,6 +75,10 @@ public class InitData implements CommandLineRunner {
 
         Sæde sæde401 = new Sæde(1,1, SædeType.STANDARD, 100, false);
         sædeRepository.save(sæde401);
+
+        Bestilling bestilling1 = new Bestilling("Mads", "mads@gmail.com", new ArrayList<>(Arrays.asList(forestilling1)), new ArrayList<>(Arrays.asList(sæde401)), 100, LocalDateTime.now(), false);
+        bestillingRepository.save(bestilling1);
+
         // Tilføj sæder til sal2 (på samme måde som sal1)
 //        Set<Sæde> sæderSal2 = new HashSet<>();
 //        for (int række = 1; række <= 25; række++) {

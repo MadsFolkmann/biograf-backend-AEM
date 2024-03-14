@@ -6,13 +6,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-public class Ordre {
+public class Bestilling {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String navn;
     private String email;
-    @OneToMany
+    @ManyToMany
     private List<Forestilling> forestilling;
     @OneToMany
     private List<Sæde> sæder;
@@ -20,6 +20,18 @@ public class Ordre {
     private LocalDateTime reservationstidspunkt;
     private boolean betalt;
 
+    public Bestilling() {
+    }
+
+    public Bestilling(String navn, String email, List<Forestilling> forestilling, List<Sæde> sæder, double pristotal, LocalDateTime reservationstidspunkt, boolean betalt) {
+        this.navn = navn;
+        this.email = email;
+        this.forestilling = forestilling;
+        this.sæder = sæder;
+        this.pristotal = pristotal;
+        this.reservationstidspunkt = reservationstidspunkt;
+        this.betalt = betalt;
+    }
 
     public int getId() {
         return id;

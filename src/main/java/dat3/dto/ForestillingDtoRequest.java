@@ -21,7 +21,7 @@ public class ForestillingDtoRequest {
     private BiografDtoRequest biograf;
     private FilmDtoRequest film;
     private SalDtoRequest sal;
-    private Set<SædeDto> sæder;
+    private Set<SædeDtoRequest> sæder;
     private LocalDateTime tidspunkt;
 
     public ForestillingDtoRequest(Forestilling forestilling) {
@@ -29,7 +29,8 @@ public class ForestillingDtoRequest {
         this.biograf = new BiografDtoRequest(forestilling.getBiograf());
         this.film = new FilmDtoRequest(forestilling.getFilm());
         this.sal = new SalDtoRequest(forestilling.getSal());
-        this.sæder = forestilling.getSæder().stream().map(SædeDto::new).collect(Collectors.toSet());
+        this.sæder = forestilling.getSæder().stream().map(SædeDtoRequest::new).collect(Collectors.toSet());
         this.tidspunkt = forestilling.getTidspunkt();
     }
+
 }

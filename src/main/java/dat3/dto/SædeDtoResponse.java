@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SædeDto {
+public class SædeDtoResponse {
     private Integer id;
     private Integer række;
     private Integer sædeNummer;
@@ -19,7 +19,7 @@ public class SædeDto {
     private Double pris;
     private Boolean optaget;
 
-    public SædeDto(Sæde sæde) {
+    public SædeDtoResponse(Sæde sæde) {
         this.id = sæde.getId();
         this.række = sæde.getRække();
         this.sædeNummer = sæde.getSædeNummer();
@@ -28,14 +28,14 @@ public class SædeDto {
         this.optaget = sæde.isOptaget();
     }
 
-    public Sæde toEntity() {
-        Sæde sæde = new Sæde();
-        sæde.setId(this.id);
-        sæde.setRække(this.række);
-        sæde.setSædeNummer(this.sædeNummer);
-        sæde.setSædeType(this.sædeType);
-        sæde.setPris(this.pris);
-        sæde.setOptaget(this.optaget);
-        return sæde;
-    }
+//    public Sæde toEntity() {
+//        Sæde sæde = new Sæde();
+//        sæde.setId(this.id);
+//        sæde.setRække(this.række);
+//        sæde.setSædeNummer(this.sædeNummer);
+//        sæde.setSædeType(this.sædeType);
+//        sæde.setPris(this.pris);
+//        sæde.setOptaget(this.optaget);
+//        return sæde;
+//    }
 }
