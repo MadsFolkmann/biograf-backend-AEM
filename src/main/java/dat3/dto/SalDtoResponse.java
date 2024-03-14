@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SalDtoResponse {
+public class  SalDtoResponse {
     private Integer id;
     private Integer nummer;
     private Integer antalRækker;
