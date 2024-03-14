@@ -1,6 +1,7 @@
 package dat3.service;
 
-import dat3.dto.FilmDto;
+import dat3.dto.FilmDtoRequest;
+import dat3.dto.FilmDtoResponse;
 import dat3.entity.Film;
 import dat3.repository.FilmRepository;
 import org.springframework.http.HttpStatus;
@@ -9,67 +10,60 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
-
 public class FilmService {
 
-    FilmRepository filmRepository;
+    private final FilmRepository filmRepository;
 
     public FilmService(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;
     }
 
-    public List<FilmDto> getAllFilms() {
+    public List<FilmDtoResponse> getAllFilms() {
         List<Film> films = filmRepository.findAll();
         return films.stream()
-                .map(film -> new FilmDto(film)) // Brug FilmDto-konstruktøren, der mapper alle filmoplysninger
-                .toList();
+                .map(FilmDtoResponse::new)
+                .collect(Collectors.toList());
     }
 
-    public FilmDto getFilmById(int idInt) {
-        Film film = filmRepository.findById(idInt).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
-        return new FilmDto(film);
+    public FilmDtoResponse getFilmById(int id) {
+        Film film = filmRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Film not found"));
+        return new FilmDtoResponse(film);
     }
 
-    public FilmDto addFilm(FilmDto request) {
+    public FilmDtoResponse addFilm(FilmDtoRequest request) {
         Film newFilm = new Film();
         updateFilm(newFilm, request);
         filmRepository.save(newFilm);
-        return new FilmDto(newFilm);
+        return new FilmDtoResponse(newFilm);
     }
 
-
-    private void updateFilm(Film original, FilmDto r) {
-        original.setTitel(r.getTitel());
-        original.setVarighed(r.getVarighed());
-        original.setGenre(r.getGenre());
-        original.setBillede(r.getBillede());
-        original.setEr3D(r.isEr3D());
-        original.setFilmBeskrivelse(r.getFilmBeskrivelse());
-        original.setFilmSprog(r.getFilmSprog());
+    public FilmDtoResponse editFilm(FilmDtoRequest request, int id) {
+        Film film = filmRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Film not found"));
+        updateFilm(film, request);
+        filmRepository.save(film);
+        return new FilmDtoResponse(film);
     }
 
-
-    public FilmDto editFilm(FilmDto request, int id) {
-        Film filmToEdit = filmRepository.findById(id).orElseThrow(()
-                -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
-
-        // Opdater filmobjektet med oplysninger fra anmodningen
-        updateFilm(filmToEdit, request);
-
-        // Gem den opdaterede film i databasen
-        filmRepository.save(filmToEdit);
-
-        // Returner den opdaterede film som en DTO
-        return new FilmDto(filmToEdit);
-    }
-
-
-    public ResponseEntity deleteFilm(int id) {
-        Film film = filmRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Film ikke fundet"));
+    public ResponseEntity<Void> deleteFilm(int id) {
+        Film film = filmRepository.findById(id).orElseThrow(() ->
+                new NoSuchElementException("Film not found"));
         filmRepository.delete(film);
-        return new ResponseEntity(HttpStatus.OK);
+        return ResponseEntity.ok().build();
+    }
+
+    private void updateFilm(Film film, FilmDtoRequest request) {
+        film.setTitel(request.getTitel());
+        film.setVarighed(request.getVarighed());
+        film.setGenre(request.getGenre());
+        film.setBillede(request.getBillede());
+        film.setEr3D(request.isEr3D());
+        film.setFilmBeskrivelse(request.getFilmBeskrivelse());
+        film.setFilmSprog(request.getFilmSprog());
     }
 }
