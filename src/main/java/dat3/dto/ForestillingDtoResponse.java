@@ -13,18 +13,18 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ForestillingDtoResponse {
         private int id;
-        private BiografDto biograf;
-        private FilmDto film;
-        private SalDto sal;
+        private BiografDtoResponse biograf;
+        private FilmDtoResponse film;
+        private SalDtoResponse sal;
         private Set<SædeDto> sæder;
         private LocalDateTime tidspunkt;
 
 
         public ForestillingDtoResponse(Forestilling forestilling) {
             this.id = forestilling.getId();
-            this.biograf = new BiografDto(forestilling.getBiograf());
-            this.film = new FilmDto(forestilling.getFilm());
-            this.sal = new SalDto(forestilling.getSal());
+            this.biograf = new BiografDtoResponse(forestilling.getBiograf());
+            this.film = new FilmDtoResponse(forestilling.getFilm());
+            this.sal = new SalDtoResponse(forestilling.getSal());
             this.sæder = forestilling.getSæder().stream().map(SædeDto::new).collect(Collectors.toSet());
             this.tidspunkt = forestilling.getTidspunkt();
         }
