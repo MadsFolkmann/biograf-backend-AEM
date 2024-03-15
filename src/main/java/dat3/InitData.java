@@ -41,8 +41,19 @@ public class InitData implements CommandLineRunner {
         Biograf biograf1 = new Biograf("Mads Seje Biograf", "Mads vej 2", 2, new ArrayList<>(Arrays.asList(sal1, sal2)));
         biografRepository.save(biograf1);
 
-        Film film1 = new Film("The Matrix",120, "Action", "1999", false, "The Matrix er en amerikansk science fiction-actionfilm fra 1999 instrueret af The Wachowskis og produceret af Joel Silver. ", "English");
+        Film film1 = new Film("The Matrix",120, "Action", "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/The_Matrix_soundtrack_cover.jpg/220px-The_Matrix_soundtrack_cover.jpg", false, "The Matrix er en amerikansk science fiction-actionfilm fra 1999 instrueret af The Wachowskis og produceret af Joel Silver. ", "English");
         filmRepository.save(film1);
+
+        Film film2 = new Film("Kung Fu Panda 4", 90, "Animation", "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRRTP-j51D5LbT3V_xXtI7L639TWsN2KABuVeSyMRqZZDzoccDE", false, "Kung Fu Panda 4 is an American computer-animated action comedy film produced by DreamWorks Animation and distributed by Universal Pictures. It is the fourth installment in the Kung Fu Panda franchise and the sequel to Kung Fu Panda 3 (2016).", "English");
+        filmRepository.save(film2);
+
+        Film film3 = new Film("Dune: del 2", 155, "Science Fiction", "https://www.kultunaut.dk/images/film/7102461/plakat.jpg", false, "Dune is a science fiction film directed by Denis Villeneuve, based on the novel of the same name by Frank Herbert.", "English");
+        filmRepository.save(film3);
+
+        Film film4 = new Film("The Batman", 170, "Action", "https://www.kultunaut.dk/images/film/7100552/plakat.jpg", false, "The Batman is a superhero film directed by Matt Reeves, starring Robert Pattinson as Bruce Wayne / Batman.", "English");
+        filmRepository.save(film4);
+
+
 
         Forestilling forestilling1 = new Forestilling(biograf1, film1, sal1, LocalDateTime.now());
 
