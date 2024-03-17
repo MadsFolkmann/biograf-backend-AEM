@@ -12,8 +12,8 @@ public class Bestilling {
     private int id;
     private String navn;
     private String email;
-    @ManyToMany
-    private List<Forestilling> forestilling;
+    @ManyToOne
+    private Forestilling forestilling;
     @OneToMany
     private List<Sæde> sæder;
     private double pristotal;
@@ -23,7 +23,7 @@ public class Bestilling {
     public Bestilling() {
     }
 
-    public Bestilling(String navn, String email, List<Forestilling> forestilling, List<Sæde> sæder, double pristotal, LocalDateTime reservationstidspunkt, boolean betalt) {
+    public Bestilling(String navn, String email, Forestilling forestilling, List<Sæde> sæder, double pristotal, LocalDateTime reservationstidspunkt, boolean betalt) {
         this.navn = navn;
         this.email = email;
         this.forestilling = forestilling;
@@ -57,11 +57,11 @@ public class Bestilling {
         this.email = email;
     }
 
-    public List<Forestilling> getForestilling() {
+    public Forestilling getForestilling() {
         return forestilling;
     }
 
-    public void setForestilling(List<Forestilling> forestilling) {
+    public void setForestilling(Forestilling forestilling) {
         this.forestilling = forestilling;
     }
 

@@ -39,6 +39,10 @@ public class ForestillingService {
                 new RuntimeException("Forestilling ikke fundet")));
     }
 
+    public List<ForestillingDtoResponse> getForestillingerByFilmId(int filmId) {
+        return forestillingRepository.findAll().stream().filter(forestilling -> forestilling.getFilm().getId() == filmId).map(ForestillingDtoResponse::new).collect(Collectors.toList());
+    }
+
     public ForestillingDtoResponse addForestilling(ForestillingDtoRequest request) {
         Forestilling newForestilling = new Forestilling();
         updateForestilling(newForestilling, request);

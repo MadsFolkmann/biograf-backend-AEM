@@ -16,7 +16,7 @@ public class BestillingDtoResponse {
     private int id;
     private String name;
     private String email;
-    private List<ForestillingDtoRequestUdenSæder> forestilling;
+    private ForestillingDtoRequestUdenSæder forestilling;
     private List<SædeDtoRequest> sæder;
     private double pristotal;
     private LocalDateTime reservationstidspunkt;
@@ -27,7 +27,7 @@ public class BestillingDtoResponse {
         this.id = bestiling.getId();
         this.name = bestiling.getNavn();
         this.email = bestiling.getEmail();
-        this.forestilling = bestiling.getForestilling().stream().map(ForestillingDtoRequestUdenSæder::new).collect(Collectors.toList());
+        this.forestilling = new ForestillingDtoRequestUdenSæder(bestiling.getForestilling());
         this.sæder = bestiling.getSæder().stream().map(SædeDtoRequest::new).collect(Collectors.toList());
         this.pristotal = bestiling.getPristotal();
         this.reservationstidspunkt = bestiling.getReservationstidspunkt();

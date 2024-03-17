@@ -28,6 +28,11 @@ public class ForestillingController {
         return forestillingService.getForestillingById(id);
     }
 
+    @GetMapping(path= "/film/{filmId}")
+    public List<ForestillingDtoResponse> getForestillingerByFilmId(@PathVariable int filmId) {
+        return forestillingService.getForestillingerByFilmId(filmId);
+    }
+
     @PostMapping
     public ForestillingDtoResponse addForestilling(@RequestBody ForestillingDtoRequest forestillingDtoRequest) {
         return forestillingService.addForestilling(forestillingDtoRequest);

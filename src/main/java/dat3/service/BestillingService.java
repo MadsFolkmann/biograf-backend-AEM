@@ -59,7 +59,7 @@ public class BestillingService {
 
     public void updateBestilling(Bestilling bestilling, BestillingDtoRequest request) {
 
-        List<Forestilling> forestillinger = request.getForestilling().stream().map(forestilling -> forestillingRepository.findById(forestilling.getId()).orElseThrow(() -> new RuntimeException("Forestilling ikke fundet"))).collect(Collectors.toList());
+        Forestilling forestillinger = forestillingRepository.findById(request.getForestilling().getId()).orElseThrow(() -> new RuntimeException("Forestilling ikke fundet"));
         List<Sæde> sæder = request.getSæder().stream().map(sæde -> sædeRepository.findById(sæde.getId()).orElseThrow(() -> new RuntimeException("Sæde ikke fundet"))).collect(Collectors.toList());
 
         bestilling.setNavn(request.getName());

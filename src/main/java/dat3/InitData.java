@@ -53,7 +53,8 @@ public class InitData implements CommandLineRunner {
         Film film4 = new Film("The Batman", 170, "Action", "https://www.kultunaut.dk/images/film/7100552/plakat.jpg", false, "The Batman is a superhero film directed by Matt Reeves, starring Robert Pattinson as Bruce Wayne / Batman.", "English");
         filmRepository.save(film4);
 
-
+        Film film5 = new Film("Anyone But You", 103, "Romance", "https://api.kino.dk/sites/kino.dk/files/styles/isg_focal_point_356_534/public/2023-10/anyonebutyouplakat.webp?h=7881f276&itok=tLMuTcUA", false, "Anyone But You is a romantic comedy film directed by Simon Curtis, starring Sam Claflin and Holliday Grainger.", "English");
+        filmRepository.save(film5);
 
         Forestilling forestilling1 = new Forestilling(biograf1, film1, sal1, LocalDateTime.now());
 
@@ -87,7 +88,7 @@ public class InitData implements CommandLineRunner {
         Sæde sæde401 = new Sæde(1,1, SædeType.STANDARD, 100, false);
         sædeRepository.save(sæde401);
 
-        Bestilling bestilling1 = new Bestilling("Mads", "mads@gmail.com", new ArrayList<>(Arrays.asList(forestilling1)), new ArrayList<>(Arrays.asList(sæde401)), 100, LocalDateTime.now(), false);
+        Bestilling bestilling1 = new Bestilling("Mads", "mads@gmail.com", forestilling1, new ArrayList<>(Arrays.asList(sæde401)), 100, LocalDateTime.now(), false);
         bestillingRepository.save(bestilling1);
 
         // Tilføj sæder til sal2 (på samme måde som sal1)
