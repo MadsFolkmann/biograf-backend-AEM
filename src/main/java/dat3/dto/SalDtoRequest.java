@@ -19,6 +19,7 @@ public class SalDtoRequest {
     private Integer antalRækker;
     private Integer antalSæderPrRække;
     private SalType salType;
+    private BiografDtoRequest biograf;
 
     public SalDtoRequest(Sal sal) {
         this.id = sal.getId();
@@ -26,6 +27,7 @@ public class SalDtoRequest {
         this.antalRækker = sal.getAntalRækker();
         this.antalSæderPrRække = sal.getAntalSæderPrRække();
         this.salType = sal.getSalType();
+        this.biograf = new BiografDtoRequest(sal.getBiograf());
 
 
     }

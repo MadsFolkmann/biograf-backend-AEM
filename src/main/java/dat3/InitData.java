@@ -32,14 +32,14 @@ public class InitData implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        Sal sal1 = new Sal(1,25,16, SalType.STOR);
-        Sal sal2 = new Sal(2,25,16, SalType.STOR);
+        Biograf biograf1 = new Biograf("Mads Seje Biograf", "Mads vej 2", 2);
+        biografRepository.save(biograf1);
+
+        Sal sal1 = new Sal(1,25,16, SalType.STOR, biograf1);
+        Sal sal2 = new Sal(2,25,16, SalType.STOR, biograf1);
 
         salRepository.save(sal1);
         salRepository.save(sal2);
-
-        Biograf biograf1 = new Biograf("Mads Seje Biograf", "Mads vej 2", 2, new ArrayList<>(Arrays.asList(sal1, sal2)));
-        biografRepository.save(biograf1);
 
         Film film1 = new Film("The Matrix",120, "Action", "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/The_Matrix_soundtrack_cover.jpg/220px-The_Matrix_soundtrack_cover.jpg", false, "The Matrix er en amerikansk science fiction-actionfilm fra 1999 instrueret af The Wachowskis og produceret af Joel Silver. ", "English");
         filmRepository.save(film1);

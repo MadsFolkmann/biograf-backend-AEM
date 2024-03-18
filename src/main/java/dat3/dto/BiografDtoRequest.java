@@ -18,13 +18,11 @@ public class BiografDtoRequest {
     private String navn;
     private String adresse;
     private Integer antalSale;
-    private List<SalDtoResponse> sale;
 
     public BiografDtoRequest(Biograf biograf) {
         this.id = biograf.getId();
         this.navn = biograf.getNavn();
         this.adresse = biograf.getAdresse();
-        this.antalSale = biograf.getAntalSale();
 
     }
 }
