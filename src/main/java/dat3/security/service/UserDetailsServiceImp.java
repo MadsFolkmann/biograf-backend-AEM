@@ -28,6 +28,4 @@ public class UserDetailsServiceImp implements UserDetailsService {
     return optionalUser.orElseThrow(()->new ResponseStatusException(HttpStatus.UNAUTHORIZED,WRONG_USERNAME_OR_PASSWORD));
   }
 
-  public void saveUser(UserWithRoles newUser) {
-  }
 }

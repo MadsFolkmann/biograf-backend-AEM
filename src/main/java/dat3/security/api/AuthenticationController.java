@@ -2,8 +2,12 @@ package dat3.security.api;
 
 import dat3.security.dto.LoginRequest;
 import dat3.security.dto.LoginResponse;
+import dat3.security.dto.OpretRequest;
+import dat3.security.dto.OpretResponse;
+import dat3.security.entity.Role;
 import dat3.security.entity.UserWithRoles;
 import dat3.security.service.UserDetailsServiceImp;
+import dat3.security.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -42,12 +46,43 @@ public class AuthenticationController {
 
   private AuthenticationManager authenticationManager;
 
+  UserService userService;
+
   JwtEncoder encoder;
 
   public AuthenticationController(AuthenticationConfiguration authenticationConfiguration, JwtEncoder encoder) throws Exception {
     this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
     this.encoder = encoder;
   }
+
+  @PostMapping("opret")
+  @Operation(summary = "Opret", description = "Use this to create a new user")
+  public ResponseEntity<OpretResponse> opret(@RequestBody OpretRequest request) {
+    try {
+      // Opret en UserWithRoles-objekt baseret på request
+      UserWithRoles userWithRoles = new UserWithRoles();
+      userWithRoles.setUsername(request.getUsername());
+      userWithRoles.setPassword(request.getPassword());
+
+      // Tilføj en standardrolle til den nye bruger
+      Role defaultRole = new Role("ROLE_USER");
+      userWithRoles.addRole(defaultRole);
+
+      // Gem den nye bruger i din database eller brug en serviceklasse til at håndtere oprettelsen
+      // Eksempel:
+      userService.createUser(userWithRoles);
+
+      // Opret en OpretResponse med det oprettede brugernavn og adgangskode
+      OpretResponse response = new OpretResponse(userWithRoles.getUsername(), userWithRoles.getPassword());
+
+      // Returner en succesrespons og den oprettede bruger
+      return ResponseEntity.ok().body(response);
+    } catch (Exception e) {
+      // Hvis der opstår en fejl under oprettelsen, kast en fejlrespons
+      throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error creating user", e);
+    }
+  }
+
 
   @PostMapping("login")
   @Operation(summary = "Login", description = "Use this to login and get a token")
