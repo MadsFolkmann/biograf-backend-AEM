@@ -38,6 +38,7 @@ public class UserWithRoles implements UserDetails {
   String email;
 
   //60 = length of a bcrypt encoded password
+  @Setter
   @Column(nullable = false, length = 60)
   String password;
 
@@ -64,11 +65,7 @@ public class UserWithRoles implements UserDetails {
     this.email = email;
   }
 
-  public void setPassword(String pw){
-    if(pw.length()<60){
-      throw new IllegalArgumentException("Password is not encoded");
-    }
-    this.password = pw;
+  public UserWithRoles(String username, String password) {
   }
 
   @Override
