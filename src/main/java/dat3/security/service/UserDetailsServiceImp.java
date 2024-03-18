@@ -27,4 +27,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
     final Optional<UserWithRoles> optionalUser = userWithRolesRepository.findById(username);
     return optionalUser.orElseThrow(()->new ResponseStatusException(HttpStatus.UNAUTHORIZED,WRONG_USERNAME_OR_PASSWORD));
   }
+
+  public void saveUser(UserWithRoles newUser) {
+  }
 }
