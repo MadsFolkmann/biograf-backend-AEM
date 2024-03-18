@@ -1,6 +1,7 @@
 package dat3.security_demo.api;
 
 import dat3.security.entity.Role;
+import dat3.security.repository.RoleRepository;
 import dat3.security_demo.entity.SpecialUser;
 import dat3.security_demo.repository.SpecialUserRepository;
 import org.springframework.http.HttpStatus;
@@ -16,10 +17,12 @@ public class SpecialUsersController {
 
     private final SpecialUserRepository specialUserRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
-    public SpecialUsersController(SpecialUserRepository specialUserRepository, PasswordEncoder passwordEncoder) {
+    public SpecialUsersController(SpecialUserRepository specialUserRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.specialUserRepository = specialUserRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -37,8 +40,11 @@ public class SpecialUsersController {
             // Set the encoded password back to the specialUser
             specialUser.setPassword(encodedPassword);
 
-            // Set role to "User"
-            specialUser.addRole(new Role("USER")); // Assuming you have a Role entity and a method to add a role to SpecialUser
+            // Find or create role "USER"
+            Role userRole = roleRepository.findById("USER").orElseGet(() -> roleRepository.save(new Role("USER")));
+
+            // Add role to specialUser
+            specialUser.addRole(userRole);
 
             // Save the user with the encrypted password and role
             specialUserRepository.save(specialUser);
