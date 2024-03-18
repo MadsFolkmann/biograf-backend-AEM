@@ -23,6 +23,7 @@ public class BiografDtoRequest {
         this.id = biograf.getId();
         this.navn = biograf.getNavn();
         this.adresse = biograf.getAdresse();
+        this.antalSale = biograf.getAntalSale();
 
     }
 }
