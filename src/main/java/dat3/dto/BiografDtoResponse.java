@@ -17,7 +17,6 @@ public class BiografDtoResponse {
     private String navn;
     private String adresse;
     private Integer antalSale;
-    private List<SalDtoResponse> sale;
 
     private LocalDateTime created;
     private LocalDateTime edited;
@@ -26,7 +25,6 @@ public class BiografDtoResponse {
         this.id = biograf.getId();
         this.navn = biograf.getNavn();
         this.adresse = biograf.getAdresse();
-        this.antalSale = biograf.getAntalSale();
 
     }
 

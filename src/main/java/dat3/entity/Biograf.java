@@ -12,17 +12,16 @@ public class Biograf {
     private String navn;
     private String adresse;
     private int antalSale;
-    @OneToMany
-    private List<Sal> sale;
+
 
     public Biograf() {
     }
 
-    public Biograf(String navn, String adresse, int antalSale, List<Sal> sale) {
+    public Biograf(String navn, String adresse, int antalSale) {
         this.navn = navn;
         this.adresse = adresse;
         this.antalSale = antalSale;
-        this.sale = sale;
+
     }
 
     public int getId() {
@@ -57,11 +56,5 @@ public class Biograf {
         this.antalSale = antalSale;
     }
 
-    public List<Sal> getSale() {
-        return sale;
-    }
 
-    public void setSale(List<Sal> sale) {
-        this.sale = sale;
-    }
 }
