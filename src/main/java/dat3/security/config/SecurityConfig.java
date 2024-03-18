@@ -74,38 +74,38 @@ public class SecurityConfig {
            // .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/info")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/film")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/film/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/film")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/film/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/film/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/film")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/film/*")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/film/*")).hasAnyAuthority("ADMIN")
 
 
 
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/biograf")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/biograf/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/biograf")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/biograf/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/biograf/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/biograf")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/biograf/*")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/biograf/*")).hasAnyAuthority("ADMIN")
 
             //-------Forestilling security-------//
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/forestilling")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/forestilling/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/forestilling")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/forestilling/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PATCH, "/forestilling/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/forestilling/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/forestilling")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/forestilling/*")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PATCH, "/forestilling/*")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/forestilling/*")).hasAnyAuthority("ADMIN")
 
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/sal")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/sal/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/sal")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/sal/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/sal/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/sal")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/sal/*")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/sal/*")).hasAnyAuthority("ADMIN")
 
 
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/forestilling")).permitAll()
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.GET, "/forestilling/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/forestilling")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/forestilling/*")).permitAll()
-            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/forestilling/*")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/forestilling")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/forestilling/*")).hasAnyAuthority("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/forestilling/*")).hasAnyAuthority("ADMIN")
 
 
 
