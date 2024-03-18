@@ -33,6 +33,13 @@ public class SalService {
         return new SalDtoResponse(sal);
     }
 
+    public List<SalDtoResponse> getSaleByBiograf(int biografId) {
+        return salRepository.findAll().stream()
+                .filter(sal -> sal.getBiograf().getId() == biografId)
+                .map(SalDtoResponse::new)
+                .collect(Collectors.toList());
+    }
+
     public SalDtoResponse addSal(SalDtoRequest request) {
         Sal newSal = new Sal();
         updateSal(newSal, request);

@@ -27,6 +27,12 @@ public class SalController {
         return salService.getSalById(id);
     }
 
+    //get sale til en bestemt biograf
+    @GetMapping(path = "/biograf/{biografId}")
+    public List<SalDtoResponse> getSaleByBiograf(@PathVariable int biografId) {
+        return salService.getSaleByBiograf(biografId);
+    }
+
     @PostMapping
     public SalDtoResponse addSal(@RequestBody SalDtoRequest salDtoRequest) {
         return salService.addSal(salDtoRequest);
