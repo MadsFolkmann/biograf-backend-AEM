@@ -14,10 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 
 public class BiografDtoRequest {
-    private Integer id;
+    private int id;
     private String navn;
     private String adresse;
-    private Integer antalSale;
+    private int antalSale;
 
     public BiografDtoRequest(Biograf biograf) {
         this.id = biograf.getId();

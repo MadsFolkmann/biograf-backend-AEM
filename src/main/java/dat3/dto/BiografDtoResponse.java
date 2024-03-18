@@ -13,10 +13,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class BiografDtoResponse {
-    private Integer id;
+    private int id;
     private String navn;
     private String adresse;
-    private Integer antalSale;
+    private int antalSale;
 
     private LocalDateTime created;
     private LocalDateTime edited;
