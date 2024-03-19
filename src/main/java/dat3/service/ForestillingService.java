@@ -68,13 +68,16 @@ public class ForestillingService {
                 .orElseThrow(() -> new RuntimeException("Film ikke fundet"));
         Sal sal = salRepository.findById(request.getSal().getId())
                 .orElseThrow(() -> new RuntimeException("Sal ikke fundet"));
-        Set<Sæde> sæder = generateSæderForNewForestilling(sal);
 
         original.setBiograf(biograf);
         original.setFilm(film);
         original.setSal(sal);
-        original.setSæder(sæder);
         original.setTidspunkt(request.getTidspunkt());
+
+        if (original.getId() == 0) {
+            Set<Sæde> sæder = generateSæderForNewForestilling(sal);
+            original.setSæder(sæder);
+        }
     }
 
     private Set<Sæde> generateSæderForNewForestilling(Sal sal) {
