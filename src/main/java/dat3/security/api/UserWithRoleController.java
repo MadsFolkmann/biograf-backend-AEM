@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/user-with-role")
@@ -18,6 +20,12 @@ public class UserWithRoleController {
 
   public UserWithRoleController(UserWithRolesService userWithRolesService) {
     this.userWithRolesService = userWithRolesService;
+  }
+
+  @GetMapping("/all")
+  public ResponseEntity<List<UserWithRolesResponse>> getAllUsersWithRoles() {
+    List<UserWithRolesResponse> users = userWithRolesService.getAllUsersWithRoles();
+    return ResponseEntity.status(HttpStatus.OK).body(users);
   }
 
   //Anonymous users can call this.
