@@ -11,10 +11,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class  SalDtoResponse {
-    private Integer id;
-    private Integer nummer;
-    private Integer antalRækker;
-    private Integer antalSæderPrRække;
+    private int id;
+    private int nummer;
+    private int antalRækker;
+    private int antalSæderPrRække;
     private SalType salType;
     private BiografDtoRequest biograf;
 

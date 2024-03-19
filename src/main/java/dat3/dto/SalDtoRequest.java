@@ -14,10 +14,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SalDtoRequest {
 
-    private Integer id;
-    private Integer nummer;
-    private Integer antalRækker;
-    private Integer antalSæderPrRække;
+    private int id;
+    private int nummer;
+    private int antalRækker;
+    private int antalSæderPrRække;
     private SalType salType;
     private BiografDtoRequest biograf;
 
