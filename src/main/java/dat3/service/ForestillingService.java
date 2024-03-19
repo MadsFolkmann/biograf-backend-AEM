@@ -2,16 +2,14 @@ package dat3.service;
 
 import dat3.dto.*;
 import dat3.entity.*;
+import dat3.enums.SædeType;
 import dat3.repository.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,7 +44,6 @@ public class ForestillingService {
     public ForestillingDtoResponse addForestilling(ForestillingDtoRequest request) {
         Forestilling newForestilling = new Forestilling();
         updateForestilling(newForestilling, request);
-        newForestilling.setTidspunkt(request.getTidspunkt());
         forestillingRepository.save(newForestilling);
         return new ForestillingDtoResponse(newForestilling);
     }
@@ -71,7 +68,7 @@ public class ForestillingService {
                 .orElseThrow(() -> new RuntimeException("Film ikke fundet"));
         Sal sal = salRepository.findById(request.getSal().getId())
                 .orElseThrow(() -> new RuntimeException("Sal ikke fundet"));
-        Set<Sæde> sæder = request.getSæder().stream().map(sæde -> sædeRepository.findById(sæde.getId()).orElseThrow(() -> new RuntimeException("Sæde ikke fundet"))).collect(Collectors.toSet());
+        Set<Sæde> sæder = generateSæderForNewForestilling(sal);
 
         original.setBiograf(biograf);
         original.setFilm(film);
@@ -79,4 +76,33 @@ public class ForestillingService {
         original.setSæder(sæder);
         original.setTidspunkt(request.getTidspunkt());
     }
+
+    private Set<Sæde> generateSæderForNewForestilling(Sal sal) {
+        Set<Sæde> sæder = new HashSet<>();
+        for (int række = 1; række <= sal.getAntalRækker(); række++) {
+            for (int sædeNummer = 1; sædeNummer <= sal.getAntalSæderPrRække(); sædeNummer++) {
+                SædeType sædeType;
+                if (række <= 2) {
+                    sædeType = SædeType.COWBOY;
+                } else if (række == sal.getAntalRækker()) {
+                    sædeType = SædeType.VIP;
+                } else {
+                    sædeType = SædeType.STANDARD;
+                }
+                double pris;
+                if (sædeType == SædeType.COWBOY) {
+                    pris = 50.0; // Billigere pris for cowboy-sæder
+                } else if (sædeType == SædeType.VIP) {
+                    pris = 150.0; // Dyrere pris for VIP-sæder
+                } else {
+                    pris = 100.0; // Standard pris for øvrige sæder
+                }
+                Sæde sæde = new Sæde(række, sædeNummer, sædeType, pris, false); // Optaget sat til false som standard
+                sædeRepository.save(sæde);
+                sæder.add(sæde);
+            }
+        }
+        return sæder;
+    }
 }
+
