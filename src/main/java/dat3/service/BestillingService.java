@@ -6,13 +6,11 @@ import dat3.entity.*;
 import dat3.repository.BestillingRepository;
 import dat3.repository.ForestillingRepository;
 import dat3.repository.SædeRepository;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -69,7 +67,7 @@ public class BestillingService {
                 })
                 .collect(Collectors.toList());
 
-        bestilling.setNavn(request.getName());
+        bestilling.setNavn(request.getNavn());
         bestilling.setEmail(request.getEmail());
         bestilling.setForestilling(forestilling);
         bestilling.setSæder(sæder);

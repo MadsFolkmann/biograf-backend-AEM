@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class BestillingDtoRequest {
     private int id;
-    private String name;
+    private String navn;
     private String email;
     private ForestillingDtoRequest forestilling;
     private List<SædeDtoRequest> sæder;
@@ -24,7 +24,7 @@ public class BestillingDtoRequest {
 
     public BestillingDtoRequest(Bestilling bestiling){
         this.id = bestiling.getId();
-        this.name = bestiling.getNavn();
+        this.navn = bestiling.getNavn();
         this.email = bestiling.getEmail();
         this.forestilling = new ForestillingDtoRequest(bestiling.getForestilling());
         this.sæder = bestiling.getSæder().stream().map(SædeDtoRequest::new).collect(Collectors.toList());
