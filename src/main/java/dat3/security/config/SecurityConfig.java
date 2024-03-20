@@ -107,6 +107,8 @@ public class SecurityConfig {
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.PUT, "/forestilling/*")).hasAnyAuthority("ADMIN")
             .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.DELETE, "/forestilling/*")).hasAnyAuthority("ADMIN")
 
+            .requestMatchers(mvcMatcherBuilder.pattern(HttpMethod.POST, "/bestilling")).permitAll()
+
 
 
             //Use this to completely disable security (Will not work if endpoints has been marked with @PreAuthorize)
