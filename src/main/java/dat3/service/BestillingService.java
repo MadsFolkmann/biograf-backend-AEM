@@ -58,18 +58,24 @@ public class BestillingService {
     }
 
     public void updateBestilling(Bestilling bestilling, BestillingDtoRequest request) {
-
-        Forestilling forestillinger = forestillingRepository.findById(request.getForestilling().getId()).orElseThrow(() -> new RuntimeException("Forestilling ikke fundet"));
-        List<Sæde> sæder = request.getSæder().stream().map(sæde -> sædeRepository.findById(sæde.getId()).orElseThrow(() -> new RuntimeException("Sæde ikke fundet"))).collect(Collectors.toList());
+        Forestilling forestilling = forestillingRepository.findById(request.getForestilling().getId())
+                .orElseThrow(() -> new RuntimeException("Forestilling ikke fundet"));
+        List<Sæde> sæder = request.getSæder().stream().map(sædeDto -> {
+                    Sæde sæde = sædeRepository.findById(sædeDto.getId())
+                            .orElseThrow(() -> new RuntimeException("Sæde ikke fundet"));
+                    sæde.setOptaget(true);
+                    sædeRepository.save(sæde);
+                    return sæde;
+                })
+                .collect(Collectors.toList());
 
         bestilling.setNavn(request.getName());
         bestilling.setEmail(request.getEmail());
-        bestilling.setForestilling(forestillinger);
+        bestilling.setForestilling(forestilling);
         bestilling.setSæder(sæder);
         bestilling.setPristotal(request.getPristotal());
         bestilling.setReservationstidspunkt(request.getReservationstidspunkt());
         bestilling.setBetalt(request.isBetalt());
-
     }
 
 
