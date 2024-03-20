@@ -35,11 +35,22 @@ public class InitData implements CommandLineRunner {
         Biograf biograf1 = new Biograf("Mads Seje Biograf", "Mads vej 2", 2);
         biografRepository.save(biograf1);
 
+        Biograf biograf2 = new Biograf("Woo Back Bio", "Woo City 3", 2);
+        biografRepository.save(biograf2);
+
         Sal sal1 = new Sal(1,25,16, SalType.STOR, biograf1);
         Sal sal2 = new Sal(2,25,16, SalType.STOR, biograf1);
 
+        Sal sal3 = new Sal(3,25,16, SalType.STOR, biograf2);
+        Sal sal4 = new Sal(4,12,8, SalType.LILLE, biograf2);
+
+
+
+
         salRepository.save(sal1);
         salRepository.save(sal2);
+        salRepository.save(sal3);
+        salRepository.save(sal4);
 
         Film film1 = new Film("The Matrix",120, "Action", "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/The_Matrix_soundtrack_cover.jpg/220px-The_Matrix_soundtrack_cover.jpg", false, "The Matrix er en amerikansk science fiction-actionfilm fra 1999 instrueret af The Wachowskis og produceret af Joel Silver. ", "English");
         filmRepository.save(film1);
@@ -55,6 +66,66 @@ public class InitData implements CommandLineRunner {
 
         Film film5 = new Film("Anyone But You", 103, "Romance", "https://api.kino.dk/sites/kino.dk/files/styles/isg_focal_point_356_534/public/2023-10/anyonebutyouplakat.webp?h=7881f276&itok=tLMuTcUA", false, "Anyone But You is a romantic comedy film directed by Simon Curtis, starring Sam Claflin and Holliday Grainger.", "English");
         filmRepository.save(film5);
+
+        Film film6 = new Film(
+                "Ghostbusters: Frozen Empire",
+                120,
+                "Action",
+                "https://all.web.img.acsta.net/img/13/27/132720d038a9b773c3c1ec26fcbbb205.jpg/r_500_x",
+                true,
+                "Ghostbusters: Frozen Empire is an action-packed comedy where our heroes confront a new ice age brought upon by a vengeful spirit. The team must brave the frozen tundra and face off against chilling spectres and frostbitten phantoms to save the world.",
+                "English"
+        );
+        filmRepository.save(film6);
+
+        Film film7 = new Film(
+                "Godzilla x Kong: The New Empire",
+                130,
+                "Action",
+                "https://all.web.img.acsta.net/img/24/e3/24e3c8592a929dddd994ef0b826a0880.jpg/r_500_x",
+                true,
+                "Godzilla x Kong: The New Empire showcases the epic battle between the titanic forces of nature, Godzilla and Kong, as they clash in a new chapter of their ancient rivalry.",
+                "English"
+        );
+        filmRepository.save(film7);
+
+        Film film8 = new Film(
+                "Jagtsæson 2 - I medgang og modgang",
+                95,
+                "Comedy",
+                "https://www.nfbio.dk/sites/nfbio.dk/files/styles/movie_poster/public/media-images/2024-02/gmnt-e16f7e56b7-1031431-vst-65d35a1e45079.jpeg?itok=1lj1oOp6",
+                false,
+                "Jagtsæson 2 - I medgang og modgang fortsætter med at følge livet af de tre venner, og deres udfordringer og komiske oplevelser. I denne fortsættelse står de over for nye personlige og fælles prøvelser, som tester deres venskab på nye måder.",
+                "Danish"
+        );
+        filmRepository.save(film8);
+
+        Film film9 = new Film(
+                "Drengen og Hejren",
+                90,
+                "Animation",
+                "https://www.nfbio.dk/sites/nfbio.dk/files/styles/movie_poster/public/media-images/2023-12/DOH_Plakat_LOW-scaled.jpg?itok=fi_qWHPt",
+                false,
+                "Drengen og Hejren er en hjertevarmende animationsfilm, der fortæller historien om et usædvanligt venskab mellem en ung dreng og en hejre. Sammen oplever de eventyr og lærer vigtige livslektioner om venskab, tillid og naturens kredsløb.",
+                "Danish"
+        );
+        filmRepository.save(film9);
+
+        Film film10 = new Film(
+                "Den Grænseløse",
+                110,
+                "Thriller",
+                "https://www.nfbio.dk/sites/nfbio.dk/files/styles/movie_poster/public/media-images/2023-12/gmnt-4ca4beaaca-1365388-vst-6581778fd8121.jpeg?itok=OCZZ82XD",
+                false,
+                "Den Grænseløse er en fængslende fortælling, der udforsker menneskets natur og de valg, vi står overfor, når grænserne mellem rigtigt og forkert bliver sløret. Filmen tager seerne med på en intens rejse gennem de mørke sider af ambition og hævn.",
+                "Danish"
+        );
+        filmRepository.save(film10);
+
+
+
+
+
 
         Forestilling forestilling1 = new Forestilling(biograf1, film1, sal1, LocalDateTime.now());
 
