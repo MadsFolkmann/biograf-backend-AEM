@@ -27,15 +27,4 @@ public class SædeDtoResponse {
         this.pris = sæde.getPris();
         this.optaget = sæde.isOptaget();
     }
-
-//    public Sæde toEntity() {
-//        Sæde sæde = new Sæde();
-//        sæde.setId(this.id);
-//        sæde.setRække(this.række);
-//        sæde.setSædeNummer(this.sædeNummer);
-//        sæde.setSædeType(this.sædeType);
-//        sæde.setPris(this.pris);
-//        sæde.setOptaget(this.optaget);
-//        return sæde;
-//    }
 }

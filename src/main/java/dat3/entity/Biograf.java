@@ -13,7 +13,6 @@ public class Biograf {
     private String adresse;
     private int antalSale;
 
-
     public Biograf() {
     }
 

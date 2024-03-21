@@ -2,7 +2,6 @@ package dat3.api;
 
 import dat3.dto.SalDtoRequest;
 import dat3.dto.SalDtoResponse;
-import dat3.repository.SalRepository;
 import dat3.service.SalService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,6 @@ public class SalController {
         return salService.getSalById(id);
     }
 
-    //get sale til en bestemt biograf
     @GetMapping(path = "/biograf/{biografId}")
     public List<SalDtoResponse> getSaleByBiograf(@PathVariable int biografId) {
         return salService.getSaleByBiograf(biografId);

@@ -43,7 +43,4 @@ public class BestillingController {
         bestillingService.deleteBestilling(id);
         return ResponseEntity.ok("Bestilling med id " + id + " er blevet slettet");
     }
-
-
-
 }

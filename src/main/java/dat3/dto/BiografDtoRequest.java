@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +23,5 @@ public class BiografDtoRequest {
         this.navn = biograf.getNavn();
         this.adresse = biograf.getAdresse();
         this.antalSale = biograf.getAntalSale();
-
     }
 }

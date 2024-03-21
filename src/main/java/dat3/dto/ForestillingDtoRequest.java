@@ -32,5 +32,4 @@ public class ForestillingDtoRequest {
         this.sæder = forestilling.getSæder().stream().map(SædeDtoRequest::new).collect(Collectors.toSet());
         this.tidspunkt = forestilling.getTidspunkt();
     }
-
 }

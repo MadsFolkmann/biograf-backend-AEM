@@ -59,26 +59,19 @@ public class AuthenticationController {
   @Operation(summary = "Opret", description = "Use this to create a new user")
   public ResponseEntity<OpretResponse> opret(@RequestBody OpretRequest request) {
     try {
-      // Opret en UserWithRoles-objekt baseret på request
       UserWithRoles userWithRoles = new UserWithRoles();
       userWithRoles.setUsername(request.getUsername());
       userWithRoles.setPassword(request.getPassword());
 
-      // Tilføj en standardrolle til den nye bruger
       Role defaultRole = new Role("ROLE_USER");
       userWithRoles.addRole(defaultRole);
 
-      // Gem den nye bruger i din database eller brug en serviceklasse til at håndtere oprettelsen
-      // Eksempel:
       userService.createUser(userWithRoles);
 
-      // Opret en OpretResponse med det oprettede brugernavn og adgangskode
       OpretResponse response = new OpretResponse(userWithRoles.getUsername(), userWithRoles.getPassword());
 
-      // Returner en succesrespons og den oprettede bruger
       return ResponseEntity.ok().body(response);
     } catch (Exception e) {
-      // Hvis der opstår en fejl under oprettelsen, kast en fejlrespons
       throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error creating user", e);
     }
   }
@@ -90,7 +83,6 @@ public class AuthenticationController {
 
     try {
       UsernamePasswordAuthenticationToken uat = new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword());
-      //The authenticate method will use the loadUserByUsername method in UserDetailsServiceImp
       Authentication authentication = authenticationManager.authenticate(uat);
 
       UserWithRoles user = (UserWithRoles) authentication.getPrincipal();
@@ -101,7 +93,7 @@ public class AuthenticationController {
               .collect(joining(" "));
 
       JwtClaimsSet claims = JwtClaimsSet.builder()
-              .issuer(tokenIssuer)  //Only this for simplicity
+              .issuer(tokenIssuer)
               .issuedAt(now)
               .expiresAt(now.plusSeconds(tokenExpiration))
               .subject(user.getUsername())
@@ -114,7 +106,6 @@ public class AuthenticationController {
               .body(new LoginResponse(user.getUsername(), token, roles));
 
     } catch (BadCredentialsException | AuthenticationServiceException e) {
-      // AuthenticationServiceException is thrown if the user is not found
       throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, UserDetailsServiceImp.WRONG_USERNAME_OR_PASSWORD);
     }
   }

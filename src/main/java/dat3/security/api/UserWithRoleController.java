@@ -28,7 +28,6 @@ public class UserWithRoleController {
     return ResponseEntity.status(HttpStatus.OK).body(users);
   }
 
-  //Anonymous users can call this.
   @PostMapping
   @Operation(summary = "Add a new UserWithRoles user",
              description = "If a default role is defined (app.default-role ), this role will be assigned to the user.")
@@ -39,7 +38,6 @@ public class UserWithRoleController {
 
 
 
-  //Take care with this. This should NOT be something everyone can call
   @PreAuthorize("hasAuthority('ADMIN')")
   @PatchMapping("/add-role/{username}/{role}")
   @Operation(summary = "Add a role to a UserWithRoles", description = "Caller must be authenticated with the role ADMIN")
@@ -47,7 +45,6 @@ public class UserWithRoleController {
     return userWithRolesService.addRole(username, role);
   }
 
-  //Take care with this. This should NOT be something everyone can call
   @PreAuthorize("hasAuthority('ADMIN')")
   @PatchMapping("/remove-role/{username}/{role}")
   @Operation(summary = "Removes a role from a UserWithRoles", description = "Caller must be authenticated with the role ADMIN")

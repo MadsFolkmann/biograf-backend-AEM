@@ -13,7 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SalDtoRequest {
-
     private int id;
     private int nummer;
     private int antalRækker;
@@ -28,7 +27,5 @@ public class SalDtoRequest {
         this.antalSæderPrRække = sal.getAntalSæderPrRække();
         this.salType = sal.getSalType();
         this.biograf = new BiografDtoRequest(sal.getBiograf());
-
-
     }
 }

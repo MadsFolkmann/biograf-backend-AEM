@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/forestilling")
@@ -48,6 +47,4 @@ public class ForestillingController {
         forestillingService.deleteForestilling(id);
         return ResponseEntity.ok("Forestilling med id " + id + " er blevet slettet");
     }
-
-
 }

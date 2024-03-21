@@ -1,13 +1,11 @@
 package dat3.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import dat3.entity.Biograf;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,8 +24,6 @@ public class BiografDtoResponse {
         this.navn = biograf.getNavn();
         this.adresse = biograf.getAdresse();
         this.antalSale = biograf.getAntalSale();
-
     }
-
 }
 

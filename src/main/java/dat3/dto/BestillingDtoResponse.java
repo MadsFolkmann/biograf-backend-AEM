@@ -33,5 +33,4 @@ public class BestillingDtoResponse {
         this.reservationstidspunkt = bestiling.getReservationstidspunkt();
         this.betalt = bestiling.isBetalt();
     }
-
 }

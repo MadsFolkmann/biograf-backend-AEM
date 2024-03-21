@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 @Setter
 @NoArgsConstructor
 public class ForestillingDtoResponse {
-
     private int id;
     private BiografDtoRequest biograf;
     private FilmDtoRequest film;
@@ -29,5 +28,4 @@ public class ForestillingDtoResponse {
         this.sæder = forestilling.getSæder().stream().map(SædeDtoRequest::new).collect(Collectors.toSet());
         this.tidspunkt = forestilling.getTidspunkt();
     }
-
 }

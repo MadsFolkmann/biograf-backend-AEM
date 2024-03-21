@@ -18,7 +18,6 @@ public class Sal {
     @ManyToOne
     private Biograf biograf;
 
-
     public Sal() {
     }
 
@@ -77,5 +76,4 @@ public class Sal {
     public void setBiograf(Biograf biograf) {
         this.biograf = biograf;
     }
-
 }
