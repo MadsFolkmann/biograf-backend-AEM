@@ -23,7 +23,6 @@ public class CustomOAuth2AccessDeniedHandler implements AccessDeniedHandler {
   public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e)
           throws IOException {
     logger.warn(e.getMessage());
-    //logger.warn(e.getMessage(),e);
 
     Map<String, String> parameters = new LinkedHashMap<>();
     String errorMessage = e.getLocalizedMessage();

@@ -161,34 +161,5 @@ public class InitData implements CommandLineRunner {
 
         Bestilling bestilling1 = new Bestilling("Mads", "mads@gmail.com", forestilling1, new ArrayList<>(Arrays.asList(sæde401)), 100, LocalDateTime.now(), false);
         bestillingRepository.save(bestilling1);
-
-        // Tilføj sæder til sal2 (på samme måde som sal1)
-//        Set<Sæde> sæderSal2 = new HashSet<>();
-//        for (int række = 1; række <= 25; række++) {
-//            for (int sædeNummer = 1; sædeNummer <= 16; sædeNummer++) {
-//                SædeType sædeType;
-//                if (række <= 2) {
-//                    sædeType = SædeType.COWBOY;
-//                } else if (række == 25) {
-//                    sædeType = SædeType.VIP;
-//                } else {
-//                    sædeType = SædeType.STANDARD;
-//                }
-//                double pris;
-//                if (sædeType == SædeType.COWBOY) {
-//                    pris = 50.0; // Billigere pris for cowboy-sæder
-//                } else if (sædeType == SædeType.VIP) {
-//                    pris = 150.0; // Dyrere pris for VIP-sæder
-//                } else {
-//                    pris = 100.0; // Standard pris for øvrige sæder
-//                }
-//                Sæde sæde = new Sæde(række, sædeNummer, sædeType, pris, false); // Optaget sat til false som standard
-//                sædeRepository.save(sæde);
-//
-//                sæderSal2.add(sæde);
-//            }
-//        }
-//        sal2.setSæder(sæderSal2);
-
     }
 }

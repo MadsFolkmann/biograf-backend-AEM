@@ -43,12 +43,7 @@ public class SetupDevUsers implements ApplicationRunner {
         roleRepository.save(new Role("ADMIN"));
     }
 
-     /*****************************************************************************************
-     IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     NEVER  COMMIT/PUSH CODE WITH DEFAULT CREDENTIALS FOR REAL
-     iT'S ONE OF THE TOP SECURITY FLAWS YOU CAN DO
-     If you see the lines below in log-outputs on Azure, forget whatever had your attention on, AND FIX THIS PROBLEM
-     *****************************************************************************************/
+
     private void setupUserWithRoleUsers() {
         Role roleUser = roleRepository.findById("USER").orElseThrow(()-> new NoSuchElementException("Role 'user' not found"));
         Role roleAdmin = roleRepository.findById("ADMIN").orElseThrow(()-> new NoSuchElementException("Role 'admin' not found"));

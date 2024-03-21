@@ -18,16 +18,13 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public void createUser(UserWithRoles user) {
-        // Kontroller, om brugernavnet allerede eksisterer i databasen
         if (userWithRolesRepository.existsById(user.getUsername())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username already exists");
         }
 
-        // Krypter adgangskoden før du gemmer den i databasen
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
 
-        // Gem den nye bruger i databasen
         userWithRolesRepository.save(user);
     }
 }

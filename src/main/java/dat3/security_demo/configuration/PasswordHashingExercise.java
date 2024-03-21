@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 
-//@Component
 public class PasswordHashingExercise implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {

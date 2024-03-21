@@ -14,7 +14,6 @@ import java.util.Optional;
 @Service
 public class UserDetailsServiceImp implements UserDetailsService {
 
-  //To ensure same response is made for wrong username OR password
   public static final String WRONG_USERNAME_OR_PASSWORD = "Incorrect username or password";
   UserWithRolesRepository userWithRolesRepository;
 

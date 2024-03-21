@@ -4,7 +4,6 @@ import dat3.dto.BiografDtoRequest;
 import dat3.dto.BiografDtoResponse;
 import dat3.entity.Biograf;
 import dat3.repository.BiografRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

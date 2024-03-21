@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -94,13 +93,13 @@ public class ForestillingService {
                 }
                 double pris;
                 if (sædeType == SædeType.COWBOY) {
-                    pris = 50.0; // Billigere pris for cowboy-sæder
+                    pris = 50.0;
                 } else if (sædeType == SædeType.VIP) {
-                    pris = 150.0; // Dyrere pris for VIP-sæder
+                    pris = 150.0;
                 } else {
-                    pris = 100.0; // Standard pris for øvrige sæder
+                    pris = 100.0;
                 }
-                Sæde sæde = new Sæde(række, sædeNummer, sædeType, pris, false); // Optaget sat til false som standard
+                Sæde sæde = new Sæde(række, sædeNummer, sædeType, pris, false);
                 sædeRepository.save(sæde);
                 sæder.add(sæde);
             }

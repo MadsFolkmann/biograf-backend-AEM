@@ -4,10 +4,8 @@ import dat3.dto.FilmDtoRequest;
 import dat3.dto.FilmDtoResponse;
 import dat3.entity.Film;
 import dat3.repository.FilmRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.NoSuchElementException;

@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-//-------------
 @Entity
 public class SpecialUser extends UserWithRoles {
     private String firstName;
