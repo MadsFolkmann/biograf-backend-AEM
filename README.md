@@ -7,7 +7,7 @@ Dette repository indeholder koden til Lynetten Backend, der er en server til en 
 - [Frontend Repository](https://github.com/MadsFolkmann/biograf-frontend-AEM)
 - [Deployede Versioner](#deployede-versioner)
 
-Frontend er åben på GitHub Pages og kan tilgås [her](https://emsc0001.github.io/lynetten-frontend/).
+Frontend er åben på GitHub Pages og kan tilgås [her]().
 
 ## Installation
 
