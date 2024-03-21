@@ -5,7 +5,7 @@ This repository contains the code for the Lynetten Backend, which is a server fo
 ## Links til Repositories
 - [Backend Repository](https://github.com/MadsFolkmann/biograf-backend-AEM)
 - [Frontend Repository](https://github.com/MadsFolkmann/biograf-frontend-AEM)
-- [Deployede Versioner]((https://kind-cliff-0dab30103.4.azurestaticapps.net/))
+- [Deployede Versioner](https://kind-cliff-0dab30103.4.azurestaticapps.net/)
 
 The frontend is open on GitHub Pages and can be accessed here as well: [here](https://madsfolkmann.github.io/biograf-frontend-AEM/).
 
