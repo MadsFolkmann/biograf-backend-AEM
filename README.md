@@ -1,12 +1,12 @@
 # Lynetten Backend
 
-Dette repository indeholder koden til Lynetten Backend, der er en server til en webapplikation. Følg nedenstående instruktioner for at installere og køre backend lokalt på din computer.
+This repository contains the code for the Lynetten Backend, which is a server for a web application. Follow the instructions below to install and run the backend locally on your computer.
 
 ## Links til Repositories
 - [Backend Repository](https://github.com/MadsFolkmann/biograf-backend-AEM)
 - [Frontend Repository](https://github.com/MadsFolkmann/biograf-frontend-AEM)
 - [Deployede Versioner](#deployede-versioner)
 
-Frontend er åben på GitHub Pages og kan tilgås [her]().
+The frontend is open on GitHub Pages and can be accessed here as well: [here]().
 
 ## Start the backend and frontend together.
