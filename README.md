@@ -9,12 +9,4 @@ Dette repository indeholder koden til Lynetten Backend, der er en server til en 
 
 Frontend er åben på GitHub Pages og kan tilgås [her]().
 
-## Installation
-
-Følg disse trin for at installere og køre backend på din lokale maskine.
-
-### Trin 1: Klon Repository
-
-### Trin 2: Start backend
-Kør backenden i din fortrukne IDE
-
+## Start the backend and frontend together.
