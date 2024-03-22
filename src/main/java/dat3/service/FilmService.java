@@ -19,27 +19,43 @@ public class FilmService {
     public FilmService(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;
     }
-
+/**
+     * Gets all films
+     * @return A list of films
+     */
     public List<FilmDtoResponse> getAllFilms() {
         List<Film> films = filmRepository.findAll();
         return films.stream()
                 .map(FilmDtoResponse::new)
                 .collect(Collectors.toList());
     }
-
+/**
+     * Gets a film by id
+     * @param id The id of the film
+     * @return The film
+     */
     public FilmDtoResponse getFilmById(int id) {
         Film film = filmRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Film not found"));
         return new FilmDtoResponse(film);
     }
-
+/**
+     * Adds a film
+     * @param request The request containing the film data
+     * @return The added film
+     */
     public FilmDtoResponse addFilm(FilmDtoRequest request) {
         Film newFilm = new Film();
         updateFilm(newFilm, request);
         filmRepository.save(newFilm);
         return new FilmDtoResponse(newFilm);
     }
-
+/**
+     * Edits a film
+     * @param request The request containing the film data
+     * @param id The id of the film
+     * @return The edited film
+     */
     public FilmDtoResponse editFilm(FilmDtoRequest request, int id) {
         Film film = filmRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Film not found"));
@@ -47,14 +63,22 @@ public class FilmService {
         filmRepository.save(film);
         return new FilmDtoResponse(film);
     }
-
+/**
+     * Deletes a film
+     * @param id The id of the film
+     * @return A response entity
+     */
     public ResponseEntity<Void> deleteFilm(int id) {
         Film film = filmRepository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Film not found"));
         filmRepository.delete(film);
         return ResponseEntity.ok().build();
     }
-
+/**
+     * Updates a film with the data from a request
+     * @param film The film to update
+     * @param request The request containing the new data
+     */
     private void updateFilm(Film film, FilmDtoRequest request) {
         film.setTitel(request.getTitel());
         film.setVarighed(request.getVarighed());

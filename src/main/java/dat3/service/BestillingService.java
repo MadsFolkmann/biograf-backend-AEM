@@ -26,22 +26,39 @@ public class BestillingService {
         this.sædeRepository = sædeRepository;
     }
 
+/**
+     * Gets all bestillinger
+     * @return A list of bestillinger
+     */
     public List<BestillingDtoResponse> getAllBestillinger() {
         return bestillingRepository.findAll().stream().map(BestillingDtoResponse::new).collect(Collectors.toList());
     }
-
+/**
+     * Gets a bestilling by id
+     * @param id The id of the bestilling
+     * @return The bestilling
+     */
     public BestillingDtoResponse getBestillingById(int id) {
         return new BestillingDtoResponse(bestillingRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Bestilling ikke fundet")));
     }
-
+/**
+     * Adds a bestilling
+     * @param request The request containing the bestilling data
+     * @return The added bestilling
+     */
     public BestillingDtoResponse addBestilling(BestillingDtoRequest request) {
         Bestilling newBestilling =  new Bestilling();
         updateBestilling(newBestilling, request);
         bestillingRepository.save(newBestilling);
         return new BestillingDtoResponse(newBestilling);
     }
-
+/**
+     * Edits a bestilling
+     * @param request The request containing the bestilling data
+     * @param id The id of the bestilling
+     * @return The edited bestilling
+     */
     public BestillingDtoResponse editBestilling(BestillingDtoRequest request, int id) {
         Bestilling bestilling = bestillingRepository.findById(id).orElseThrow(() ->
                 new RuntimeException("Bestilling ikke fundet"));
@@ -49,12 +66,20 @@ public class BestillingService {
         bestillingRepository.save(bestilling);
         return new BestillingDtoResponse(bestilling);
     }
-
+/**
+     * Deletes a bestilling
+     * @param id The id of the bestilling
+     * @return A response entity
+     */
     public ResponseEntity deleteBestilling(int id) {
         bestillingRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.OK);
     }
-
+/**
+     * Updates a bestilling with the data from a request
+     * @param bestilling The bestilling to update
+     * @param request The request containing the new data
+     */
     public void updateBestilling(Bestilling bestilling, BestillingDtoRequest request) {
         Forestilling forestilling = forestillingRepository.findById(request.getForestilling().getId())
                 .orElseThrow(() -> new RuntimeException("Forestilling ikke fundet"));
